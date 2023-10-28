@@ -1,19 +1,39 @@
 import { Component } from '@angular/core';
+import { trigger, state, style, transition, animate} from '@angular/animations';
+
+let animation = trigger('rotate', [
+    state('active', style({
+      transform: 'rotate({{to}}turn)'  
+    }), {
+      params: {
+        to: 0
+      }
+    }),
+    state('inactive', style({})),
+    transition('inactive => active', animate(1000)),
+  ])
+
 
 @Component({
   selector: 'app-widget',
   templateUrl: './widget.component.html',
-  styleUrls: ['./widget.component.css']
+  styleUrls: ['./widget.component.css'],
+  animations: [animation]
 })
 export class WidgetComponent {
 
-  public transform = '';
+  public state = "inactive";
+
+  public from = 0;
+  public to = 0;
 
   private _turns = 0;
 
   public set turns(value : number) {
+    this.from = this._turns;
     this._turns = value;
-    this.transform = `rotate(${this._turns}turn)`
+    this.to = value;
+    this.state = "active";
   };
 
   public get turns() : number {
@@ -24,12 +44,14 @@ export class WidgetComponent {
 
   public back() : void {
     this.turns += WidgetComponent.oneTurn;
-    console.log('back');
   }
 
   public forward() : void {
     this.turns -= WidgetComponent.oneTurn;
-    console.log('forward');
+  }
+
+  public done() {
+    this.state = 'inactive';
   }
 
 }

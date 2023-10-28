@@ -1,3 +1,24 @@
+.widget-container {
+    display: flex;
+    flex-direction: row;    
+}
+
 .viewport {
-    clip-path: polygon(30% 0%, 55% 0%, 55% 15%, 30% 15%);
+    overflow: hidden;
+    width: 30%;
+    height: 200px;
+    margin: auto;
+}
+
+img {
+    position: relative;
+    left: -120%;
+}
+
+.back-btn {
+
+}
+
+.forward-btn {
+
 }
