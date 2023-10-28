@@ -1,0 +1,6 @@
+body {
+    margin: 5% 10% 0 10%;
+    --primary-color: #A7AC9D;
+    --secondary-color: #E6E4E5;
+    background-color: var(--secondary-color);
+}
