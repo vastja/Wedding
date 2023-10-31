@@ -1,0 +1,8 @@
+<form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+<input type="text" id="email" formControlName="email" />
+<div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+    <div *ngIf="email?.errors?.['required']"> Email is required.</div>
+    <div *ngIf="email?.errors?.['pattern']"> Email is invalid.</div>
+</div>
+<input [disabled]="!guestForm.valid" type="submit" />
+</form>
