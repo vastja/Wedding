@@ -7,7 +7,6 @@ import { AbstractControl, FormControl, FormGroup, PatternValidator, Validators }
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-
   public guest = {
     email : ""
   }
