@@ -1,0 +1,39 @@
+:host {
+    display: flex;
+    flex-direction: row;
+}
+
+.basic-info {
+    flex: 1;
+}
+
+.more-info {
+    flex: 4;
+}
+
+.group {
+    display: flex;
+    flex-direction: row;
+}
+
+.name {
+    min-width: 100px;
+    margin-right: 1%;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    :host {
+        flex-direction: column;
+        padding: 0 1% 0 1%;
+    }
+
+    .group {
+        margin-top: 2%;
+        flex-direction: column;
+    }
+
+    .name {
+        width: 100%;
+    }
+}

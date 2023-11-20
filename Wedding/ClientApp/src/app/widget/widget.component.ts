@@ -40,7 +40,7 @@ export class WidgetComponent {
     return this._turns;
   }
 
-  public static readonly oneTurn = 0.1;
+  public static readonly oneTurn = 0.1429;
 
   public back() : void {
     this.turns += WidgetComponent.oneTurn;

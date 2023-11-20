@@ -1,24 +1,80 @@
 .widget-container {
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
 }
 
-.viewport {
-    overflow: hidden;
-    width: 30%;
-    height: 200px;
-    margin: auto;
+
+@media screen and (max-width: 480px) {
+    .viewport {
+        overflow: hidden;
+        width: 70vw;
+        height: 164px;
+        margin: auto;
+    }
+
+    img {
+        width: 960px;
+        height: 960px;
+        position: relative;
+        left: calc(-480px + 35vw);
+        top: -40px;
+    }
 }
 
-img {
-    position: relative;
-    left: -120%;
+@media screen and (min-width: 480px) {
+    .viewport {
+        overflow: hidden;
+        width: 70vw;
+        height: 164px;
+        margin: auto;
+    }
+
+    img {
+        width: 960px;
+        height: 960px;
+        position: relative;
+        left: calc(-480px + 35vw);
+        top: -40px;
+    }
 }
 
-.back-btn {
+@media screen and (min-width: 768px) {
+    .viewport {
+        overflow: hidden;
+        width: 70vw;
+        height: 263px;
+        margin: auto;
+    }
 
+    img {
+        width: 1536px;
+        height: 1536px;
+        position: relative;
+        left: calc(-768px + 35vw);
+        top: -64px;
+    }
 }
 
-.forward-btn {
+@media screen and (min-width: 1024px) {
+    .viewport {
+        overflow: hidden;
+        width: 70vw;
+        height: 350px;
+        margin: auto;
+    }
 
+    img {
+        width: 2048px;
+        height: 2048px;
+        position: relative;
+        left: calc(-1024px + 35vw);
+        top: -85px;
+    }
+}
+
+.widget-btn  {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: xx-large;
 }

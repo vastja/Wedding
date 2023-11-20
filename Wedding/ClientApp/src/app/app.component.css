@@ -1,13 +1,83 @@
+h1 {
+    font-size: x-large;
+}
+
 .names {
-    font-family: 'Old Standard TT';
+    font-style: normal;
     font-size: xxx-large;
     text-align: center;
     width: 100%;
 }
 
+.names-and {
+    font-size: xx-large;
+}
+
+.custom-container {
+    margin: 4% 0 0 0;
+    padding: 0;
+}
+
+.container-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.container-header hr {
+    width: 35%;
+}
+
+.container-header h2 {
+    width: 30%;
+    text-align: center;
+}
+
 .invitation {
+    margin-bottom: 4%;
     font-family: 'Times Sans Serif';
     font-size: xx-large;
     text-align: center;
     width: 100%;
+}
+
+.invitation hr {
+    color: var(--primary-color);
+    background-color: var(--primary-color);
+    height: 4px;
+}
+
+.work-in-progress {
+    padding: 2% 0 2% 0;
+}
+
+.bi-tools {
+    width: 25%;
+    font-size: large;
+    margin: auto;
+}
+
+#schedule p {
+    font-size: large;
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: large;
+    }
+
+    .names {
+        font-size: xx-large;
+    }
+    
+    .names-and {
+        font-size: x-large;
+    }
+
+    .container-header hr {
+        width: 20%;
+    }
+    
+    .container-header h2 {
+        width: 60%;
+    }
 }

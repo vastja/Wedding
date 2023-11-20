@@ -1,0 +1,136 @@
+.guest-form {
+    display: flex;
+    flex-direction: column;
+}
+
+:host {
+    --fail-color: darkred;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-group label {
+    margin: 0 1% 0 0;
+    flex: 1;
+}
+
+.input-group input[type='text'] {
+    flex: 2;
+    appearance: none;
+    border: solid 1px var(--primary-color);
+    border-radius: 4px !important;
+}
+
+.input-group input[type='text']:focus {
+    outline: var(--primary-color) solid 2px;
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+.validation-error {
+    color: var(--fail-color);
+    display: flex;
+    flex-direction: row;
+    width: 66%;
+    margin-left: auto;
+    font-size: small;
+}
+
+
+.error-group {
+    width: 100%;
+}
+
+.error-msg {
+    margin-left: 1%;
+}
+
+.mandatory {
+    flex-direction: column;
+    flex: 2;
+    margin-right: 5%;
+}
+
+.optional {
+    flex-direction: column;
+    flex: 1;
+}
+
+.fields {
+    flex-direction: row;
+    display: flex;
+}
+
+.group.submit {
+    margin-right: 0;
+    width: 100%;
+}
+
+input[type="submit"] {
+    border: solid 2px var(--primary-color);
+    border-radius: 5px;
+    width: 33%;
+    margin-left: auto;
+    background-color: white; 
+}
+
+input[type="submit"]:hover {
+    background-color: var(--primary-color);
+}
+
+.success, .failure {
+    margin: 0;
+    padding: 2%;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+.success {
+    border: solid 2px var(--primary-color);
+}
+
+.failure {
+    color: var(--fail-color);
+    border: solid 2px var(--fail-color);
+}
+
+@media screen and (max-width: 768px) {
+    .fields {
+        flex-direction: column;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .optional .input-group {
+        flex-direction: row;
+    }
+
+    .input-group input[type='text'] {
+        width: 100%;
+    }
+
+    input[type="submit"] {
+        width: 95%;
+        margin-left: 0;
+    }
+
+    .validation-error {
+        width: 100%;
+    }
+
+    .input-group input[type='checkbox'] {
+        flex: 0.2;
+    }
+}

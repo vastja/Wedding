@@ -1,7 +1,11 @@
 <div class="widget-container">
-    <button class="back-btn" (click)="back()"> Back </button>
+    <button class="widget-btn" (click)="back()">
+        <i class="bi-caret-left"></i>
+    </button>
     <div class="viewport">
-        <img src="/assets/wheel.jpeg" [@rotate]="{value: state, params: {to: to}}" (@rotate.done)='done()'/> 
+        <img src="/assets/wheel.jpg" [@rotate]="{value: state, params: {to: to}}" (@rotate.done)='done()'/> 
     </div>
-    <button class="forward-btn" (click)="forward()"> Forward </button>
+    <button class="widget-btn" (click)="forward()">
+        <i class="bi-caret-right"></i>
+    </button>
 </div>

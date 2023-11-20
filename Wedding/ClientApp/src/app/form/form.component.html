@@ -1,8 +1,85 @@
-<form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
-<input type="text" id="email" formControlName="email" />
-<div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-    <div *ngIf="email?.errors?.['required']"> Email is required.</div>
-    <div *ngIf="email?.errors?.['pattern']"> Email is invalid.</div>
-</div>
-<input [disabled]="!guestForm.valid" type="submit" />
+<form *ngIf="pending; else submited" class="guest-form" [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+    <div class="fields">
+        <div class="mandatory">
+            <div class="group">
+                <div class="input-group">
+                    <label for="firstName">Jméno*: </label>
+                    <input id="firstName" type="text" formControlName="firstName" />
+                </div>
+                <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="validation-error">
+                    <div *ngIf="firstName?.errors?.['required']" class="error-group">
+                        <i class="bi-exclamation-circle"></i>
+                        <span class="error-msg">Povinný údaj</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="input-group">
+                    <label for="lastName">Příjmení*:</label>
+                    <input  id="lastName" type="text" formControlName="lastName" />
+                </div>
+                <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="validation-error">
+                    <div *ngIf="lastName?.errors?.['required']" class="error-group"> 
+                        <i class="bi-exclamation-circle"></i>
+                        <span class="error-msg">Povinný údaj</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="input-group">
+                    <label for="email">Email*:</label>
+                    <input type="text" id="email" formControlName="email" />
+                </div>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="validation-error">
+                    <div *ngIf="email?.errors?.['required']" class="error-group"> 
+                        <i class="bi-exclamation-circle"></i>
+                        <span class="error-msg">Povinný údaj</span>    
+                    </div>
+                    <div *ngIf="email?.errors?.['pattern']" class="error-group"> 
+                        <i class="bi-exclamation-circle"></i>
+                        <span class="error-msg"> Neplatný email </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="optional">
+            <div class="group">
+                <div class="input-group">
+                    <label for="plusOne"> Doprovod </label>
+                    <input id="plusOne" type="checkbox" formControlName="plusOne" />
+                </div>
+            </div>
+            
+            <div class="group">
+                <div class="input-group">
+                    <label for="help"> Rád bych s něčím pomohl </label>
+                    <input id="help" type="checkbox" formControlName="help" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="group submit" *ngIf="pending">
+        <input [disabled]="!guestForm.valid" type="submit" value="Registrovat"/>
+    </div>
 </form>
+<ng-template #submited>
+    <div class="feedback">
+        <div *ngIf="success; else failure" class="success">
+            <i class="bi-check-circle"></i>
+            <p>
+                Prosím vyčkejte na potvrzení registrace na zadaný email.
+                V případě, že od nás neobdržíte email s potvrezním Vaší registrace do několika minut, tak nás prosím kontaktujte osobně.
+            </p>
+        </div>
+        <ng-template #failure>
+            <div class="failure">
+                <div class="bi-exclamation-circle"></div>
+                <p>
+                    Registrace se bohužel nepodařila. Kontaktuje nás prosím osobně.
+                </p>
+            </div>
+        </ng-template>
+    </div>
+</ng-template>
