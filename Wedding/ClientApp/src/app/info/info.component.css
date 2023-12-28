@@ -25,7 +25,7 @@
 @media screen and (max-width: 768px) {
     :host {
         flex-direction: column;
-        padding: 0 1% 0 1%;
+        padding: 5% 1% 0 1%;
     }
 
     .group {
