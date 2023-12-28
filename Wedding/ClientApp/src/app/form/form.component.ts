@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, Injectable } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, PatternValidator, Validators } from '@angular/forms';
+
+type State = 'none' | 'pending' | 'success' | 'error';
 
 @Component({
   selector: 'app-form',
@@ -17,9 +19,7 @@ export class FormComponent {
     help: false
   }
 
-  public pending = true;
-  public success = false;
-  public submitError = "";
+  public state : State = 'none';
 
   private readonly _httpClient : HttpClient;
 
@@ -67,6 +67,7 @@ export class FormComponent {
   }
 
   public onSubmit() : void {
+    this.state = 'pending';
     this._httpClient.post(`api/guest`, this.guestForm.value)
     .subscribe({
       next: this._onSuccess.bind(this),
@@ -75,13 +76,22 @@ export class FormComponent {
   }
 
   private _onSuccess() {
-    this.pending = false;
-    this.success = true;
+    this.state = 'success';
   }
 
   private _onError(error : any) {
-    this.pending = false;
-    this.success = false;
-    this.submitError = error;
+    this.state = 'error';
+  }
+
+  public isNotFilled() : boolean {
+    return this.state === 'none';
+  }
+
+  public isPending() : boolean {
+    return this.state === 'pending';
+  }
+
+  public isSuccess() : boolean {
+    return this.state === 'success';
   }
 }

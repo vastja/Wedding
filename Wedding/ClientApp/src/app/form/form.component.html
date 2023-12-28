@@ -1,4 +1,7 @@
-<form *ngIf="pending; else submited" class="guest-form" [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+<form *ngIf="isNotFilled(); else submited" class="guest-form" [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+    <div class="registration-deadline">
+        <i class="bi-info-circle"></i> Registrace probíhá do konce roku.
+    </div>
     <div class="fields">
         <div class="mandatory">
             <div class="group">
@@ -60,26 +63,34 @@
             </div>
         </div>
     </div>
-    <div class="group submit" *ngIf="pending">
+    <div class="group submit">
         <input [disabled]="!guestForm.valid" type="submit" value="Registrovat"/>
     </div>
 </form>
 <ng-template #submited>
     <div class="feedback">
-        <div *ngIf="success; else failure" class="success">
-            <i class="bi-check-circle"></i>
+        <div *ngIf="isPending(); else complete" class="pending">
+            <div class="bi-envelope-at"></div>
             <p>
-                Prosím vyčkejte na potvrzení registrace na zadaný email.
-                V případě, že od nás neobdržíte email s potvrezním Vaší registrace do několika minut, tak nás prosím kontaktujte osobně.
+                Chvílí strpení ...
             </p>
         </div>
-        <ng-template #failure>
-            <div class="failure">
-                <div class="bi-exclamation-circle"></div>
+        <ng-template #complete>
+            <div *ngIf="isSuccess(); else failure" class="success">
+                <i class="bi-check-circle"></i>
                 <p>
-                    Registrace se bohužel nepodařila. Kontaktuje nás prosím osobně.
+                    Prosím vyčkejte na potvrzení registrace na zadaný email.
+                    V případě, že od nás neobdržíte email s potvrezním Vaší registrace do několika minut, tak nás prosím kontaktujte osobně.
                 </p>
             </div>
+            <ng-template #failure>
+                <div class="failure">
+                    <div class="bi-exclamation-circle"></div>
+                    <p>
+                        Registrace se bohužel nepodařila. Kontaktuje nás prosím osobně.
+                    </p>
+                </div>
+            </ng-template>
         </ng-template>
     </div>
 </ng-template>

@@ -7,6 +7,16 @@
     --fail-color: darkred;
 }
 
+.registration-deadline {
+    color: var(--fail-color);
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+form {
+    margin-top: 1%;
+}
+
 .group {
     display: flex;
     flex-direction: column;
@@ -83,7 +93,7 @@ input[type="submit"] {
     background-color: white; 
 }
 
-input[type="submit"]:hover {
+input:not([disabled])[type="submit"]:hover {
     background-color: var(--primary-color);
 }
 
@@ -93,6 +103,29 @@ input[type="submit"]:hover {
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     text-align: center;
+}
+
+.pending {
+    padding-top: 2%;
+    text-align: center;
+}
+
+.bi-envelope-at {
+    margin-bottom: 2%;
+    transform-origin: 50% 50%;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-name: sending;
+}
+
+@keyframes sending {
+    from {
+        transform: scale(1, 1);
+    }
+    to {
+        transform: scale(2, 2);
+    }
 }
 
 .success {
@@ -105,12 +138,18 @@ input[type="submit"]:hover {
 }
 
 @media screen and (max-width: 768px) {
+
+    .registration-deadline {
+        text-align: left;
+    }
+
     .fields {
         flex-direction: column;
     }
 
     .input-group {
         flex-direction: column;
+        margin-top: 2%;
     }
 
     .optional .input-group {
@@ -124,13 +163,26 @@ input[type="submit"]:hover {
     input[type="submit"] {
         width: 95%;
         margin-left: 0;
+        margin-top: 2%;
     }
 
     .validation-error {
+        margin-top: 2%;
         width: 100%;
     }
 
     .input-group input[type='checkbox'] {
         flex: 0.2;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .input-group {
+        margin-top: 4%;
+    }
+
+    input[type="submit"] {
+        margin-top: 4%;
     }
 }
