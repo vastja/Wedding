@@ -3,7 +3,7 @@
         <i class="bi-caret-left"></i>
     </button>
     <div class="viewport">
-        <img src="/assets/wheel.jpg" [@rotate]="{value: state, params: {to: to}}" (@rotate.done)='done()'/> 
+        <img src="/assets/wheel.jpg" [@rotate]="{value: state, params: {to: to}}" (@rotate.done)='done($event)'/> 
     </div>
     <button class="widget-btn" (click)="forward()">
         <i class="bi-caret-right"></i>

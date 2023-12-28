@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { trigger, state, style, transition, animate} from '@angular/animations';
+import { trigger, state, style, transition, animate, AnimationEvent} from '@angular/animations';
 
 let animation = trigger('rotate', [
+    state('*', style({
+      transform: 'rotate(0.2858turn)'
+    })),
     state('active', style({
       transform: 'rotate({{to}}turn)'  
     }), {
@@ -11,6 +14,7 @@ let animation = trigger('rotate', [
     }),
     state('inactive', style({})),
     transition('inactive => active', animate(1000)),
+    transition('* => active', animate(1000)),
   ])
 
 
@@ -22,12 +26,12 @@ let animation = trigger('rotate', [
 })
 export class WidgetComponent {
 
-  public state = "inactive";
+  public state = "";
 
   public from = 0;
   public to = 0;
 
-  private _turns = 0;
+  private _turns = 2 * WidgetComponent.oneTurn;
 
   public set turns(value : number) {
     this.from = this._turns;
@@ -43,15 +47,26 @@ export class WidgetComponent {
   public static readonly oneTurn = 0.1429;
 
   public back() : void {
-    this.turns += WidgetComponent.oneTurn;
+    console.log(this.state);
+    if (this._isReady()) {
+      this.turns += WidgetComponent.oneTurn;
+    }
   }
 
   public forward() : void {
-    this.turns -= WidgetComponent.oneTurn;
+    if (this._isReady()) {
+      this.turns -= WidgetComponent.oneTurn;
+    }
   }
 
-  public done() {
-    this.state = 'inactive';
+  public done(event: AnimationEvent) {
+    if (event.fromState != 'void') {
+      this.state = 'inactive';
+    }
+  }
+
+  private _isReady() : boolean {
+    return this.state === 'inactive' || this.state === '';
   }
 
 }
