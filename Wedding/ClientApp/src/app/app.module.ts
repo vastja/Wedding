@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { InfoComponent } from './info/info.component';
+import { HarmonogramComponent } from './harmonogram/harmonogram.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InfoComponent } from './info/info.component';
     MenuComponent,
     FormComponent,
     FooterComponent,
-    InfoComponent
+    InfoComponent,
+    HarmonogramComponent
   ],
   imports: [
     BrowserModule,

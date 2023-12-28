@@ -1,0 +1,54 @@
+:host {
+    display: block;
+    margin: 0% 1% 0 1%;
+}
+
+.harmonogram-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1%;
+    width: 100%;
+}
+
+.time {
+    flex: 1;
+}
+
+.harmonogram-item.significant .time {
+    font-weight: bold;
+}
+
+.activity {
+    flex: 9;
+}
+
+.notes {
+    margin: 2% 0 2% 0;
+}
+
+@media screen and (max-width: 480px) {    
+    .harmonogram-item {
+        margin-bottom: 2%;
+    }
+
+    .activity {
+        flex: 4;
+    }
+    .notes {
+        margin: 4% 0 4% 0;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .activity {
+        flex: 4;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :host {
+        margin-top: 5%;
+    }    
+}
+
+
